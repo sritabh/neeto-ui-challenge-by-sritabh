@@ -50,7 +50,7 @@ const Sidebar = () => {
       changelogProps={{ id: "neetochangelog-trigger" }}
       navLinks={SIDENAV_LINKS}
       organizationInfo={{
-        name: "Wheel",
+        name: "neeto-ui-challenge-by-sritabh",
         subdomain: "bigbinary.com",
       }}
       profileInfo={{
