@@ -4,7 +4,7 @@ import { Clock, MenuVertical } from "neetoicons";
 import { Typography, Tag, Dropdown, Avatar, Tooltip } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-const Item = ({ note, showDeleteAlertForNote }) => {
+const Item = ({ note, showDeleteAlertForNote, showEditNotePane }) => {
   const { t } = useTranslation();
 
   return (
@@ -12,8 +12,10 @@ const Item = ({ note, showDeleteAlertForNote }) => {
       <div className="flex justify-between">
         <Typography style="h3">{note.title}</Typography>
         <Dropdown buttonStyle="text" icon={MenuVertical}>
-          <li>{t("dropdown_labels.edit")}</li>
-          <li onClick={() => showDeleteAlertForNote(note.id)}>
+          <li onClick={() => showEditNotePane(note)}>
+            {t("dropdown_labels.edit")}
+          </li>
+          <li onClick={() => showDeleteAlertForNote(note)}>
             {t("dropdown_labels.delete")}
           </li>
         </Dropdown>
@@ -23,12 +25,12 @@ const Item = ({ note, showDeleteAlertForNote }) => {
       </Typography>
       <hr />
       <div className="mt-4 flex justify-between">
-        <div className="note-tags">
+        <div className="note-tags space-x-2">
           {note.tags.map(tag => (
             <Tag
               className="bg-gray-100 text-gray-500"
-              key={tag}
-              label={tag}
+              key={tag.value}
+              label={tag.label}
               style="secondary"
             />
           ))}
@@ -44,7 +46,7 @@ const Item = ({ note, showDeleteAlertForNote }) => {
             <Avatar
               size="small"
               user={{
-                name: note.assigned_contact,
+                name: note.assignedContact.label,
                 imageUrl: "",
               }}
             />

@@ -20,5 +20,9 @@
   "alert": {
     "message": "Are you sure you want to continue? This cannot be undone.",
     "title": "Delete {{entity}}"
+  },
+  "required": {
+    "entity": "{{entity}} is required.",
+    "entities": "{{entities}} are required."
   }
 }
