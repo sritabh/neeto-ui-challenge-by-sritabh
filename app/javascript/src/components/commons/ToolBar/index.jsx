@@ -8,12 +8,15 @@ const Toolbar = ({
   title,
   onSearchChange,
   buttonLabel,
+  handleActionButtonClick,
 }) => (
   <Header
-    actionBlock={<Button label={buttonLabel} />}
     className="px-4 py-2"
-    menuBarToggle={function noRefCheck() {}}
+    menuBarToggle={() => {}}
     title={title}
+    actionBlock={
+      <Button label={buttonLabel} onClick={handleActionButtonClick} />
+    }
     searchProps={{
       onChange: onSearchChange,
       placeholder: searchPlaceholderValue,

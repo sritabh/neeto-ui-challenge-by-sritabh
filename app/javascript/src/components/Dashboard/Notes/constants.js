@@ -1,50 +1,140 @@
 import * as yup from "yup";
 
+import i18n from "../../../common/i18n";
+
+const t = i18n.t.bind(i18n);
+
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  assignedContact: "",
+  tags: [],
 };
 
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+  title: yup.string().required(t("required.entity", { entity: "Title" })),
+  description: yup
+    .string()
+    .required(t("required.entity", { entity: "Description" })),
+  assignedContact: yup
+    .object()
+    .test(
+      "isValidLabel",
+      t("required.entity", { entity: "Assigned Contact" }),
+      value =>
+        value &&
+        value.label &&
+        typeof value.label === "string" &&
+        value.label.trim() !== ""
+    ),
+  tags: yup.array().min(1, t("required.entities", { entities: "Tags" })),
 });
 
 export const SAMPLE_NOTES = [
   {
-    id: 1,
+    id: 4,
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: ["Getting Started"],
+    tags: [
+      {
+        label: "Getting Started",
+        value: "getting-started",
+      },
+    ],
     status: "Created",
     added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assigned_contact: "Oliver Smith",
-  },
-  {
-    id: 2,
-    title: "How to claim the warranty?",
-    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: ["Getting Started"],
-    status: "Drafted",
-    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assigned_contact: "Oliver Smith",
+    assignedContact: {
+      label: "Oliver Smith",
+      value: "oliver@example.com",
+    },
   },
   {
     id: 3,
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: ["Getting Started"],
+    tags: [
+      {
+        label: "Getting Started",
+        value: "getting-started",
+      },
+    ],
     status: "Drafted",
     added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assigned_contact: "Oliver Smith",
+    assignedContact: {
+      label: "Oliver Smith",
+      value: "oliver@example.com",
+    },
   },
   {
-    id: 4,
+    id: 2,
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: ["Getting Started"],
+    tags: [
+      {
+        label: "Getting Started",
+        value: "getting-started",
+      },
+    ],
     status: "Drafted",
     added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assigned_contact: "Oliver Smith",
+    assignedContact: {
+      label: "Oliver Smith",
+      value: "oliver@example.com",
+    },
+  },
+  {
+    id: 1,
+    title: "How to claim the warranty?",
+    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
+    tags: [
+      {
+        label: "Getting Started",
+        value: "getting-started",
+      },
+    ],
+    status: "Drafted",
+    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
+    assignedContact: {
+      label: "Oliver Smith",
+      value: "oliver@example.com",
+    },
+  },
+];
+
+export const AVAILABLE_NOTE_TAGS = [
+  {
+    label: "Getting Started",
+    value: "getting-started",
+  },
+  {
+    label: "Onboarding",
+    value: "onboarding",
+  },
+  {
+    label: "User Flow",
+    value: "user-flow",
+  },
+  {
+    label: "UX",
+    value: "ux",
+  },
+  {
+    label: "Bugs",
+    value: "bugs",
+  },
+  {
+    label: "V2",
+    value: "v2",
+  },
+];
+
+export const DUMMY_CONTACTS = [
+  {
+    label: "Sam Smith",
+    value: "sam@example.com",
+  },
+  {
+    label: "Oliver Smith",
+    value: "oliver@example.com",
   },
 ];

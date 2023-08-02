@@ -1,0 +1,28 @@
+{
+  "search": {
+    "placeholder": "Search Name, Email, Phone Number,etc."
+  },
+  "button": {
+    "add_entity": "Add {{entity}} +"
+  },
+  "entity": {
+    "deleted": "{{entity}} deleted successfully.",
+    "added": "{{entity}} added successfully."
+  },
+  "page_titles": {
+    "notes": "All Notes",
+    "contacts": "All Contacts"
+  },
+  "dropdown_labels": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "alert": {
+    "message": "Are you sure you want to continue? This cannot be undone.",
+    "title": "Delete {{entity}}"
+  },
+  "required": {
+    "entity": "{{entity}} is required.",
+    "entities": "{{entities}} are required."
+  }
+}
