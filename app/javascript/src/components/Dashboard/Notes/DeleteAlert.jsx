@@ -1,19 +1,22 @@
 import React from "react";
 
 import { Alert, Toastr } from "neetoui";
+import { useTranslation } from "react-i18next";
 
-const DeleteAlert = ({ handleDelete, isOpen, onClose }) => {
+const DeleteAlert = ({ handleSubmit, isOpen, onClose }) => {
+  const { t } = useTranslation();
+
   const onSubmit = () => {
-    handleDelete();
+    handleSubmit();
     onClose();
-    Toastr.success("Note deleted successfully.");
+    Toastr.success(t("entity.deleted", { entity: "Note" }));
   };
 
   return (
     <Alert
       isOpen={isOpen}
-      message="Are you sure you want to continue? This cannot be undone."
-      title="Delete Note"
+      message={t("alert.message", { entity: "Note" })}
+      title={t("alert.title", { entity: "Note" })}
       onClose={onClose}
       onSubmit={onSubmit}
     />
