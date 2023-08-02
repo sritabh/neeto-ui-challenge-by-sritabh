@@ -3,13 +3,13 @@ import React from "react";
 import { Clock, MenuVertical } from "neetoicons";
 import { Typography, Tag, Dropdown, Avatar, Tooltip } from "neetoui";
 
-const Item = ({ note }) => (
+const Item = ({ note, showDeleteAlertForNote }) => (
   <div className="m-3 rounded-sm border border-gray-200 p-4 text-gray-500 shadow-md">
     <div className="flex justify-between">
       <Typography style="h3">{note.title}</Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical}>
         <li>Edit</li>
-        <li>Delete</li>
+        <li onClick={() => showDeleteAlertForNote(note.id)}>Delete</li>
       </Dropdown>
     </div>
     <Typography className="mb-3" style="body1">
