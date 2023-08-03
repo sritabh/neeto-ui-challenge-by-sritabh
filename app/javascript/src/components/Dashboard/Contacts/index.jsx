@@ -10,8 +10,10 @@ import Toolbar from "components/commons/ToolBar";
 
 import {
   CONTACTS_TABLE_COLUMN_DATA,
-  CONTACTS_ROW_REPEATED_DATA,
-} from "./constant";
+  CONTACT_SAMPLE_REPEATED_DATA,
+} from "./constants";
+import NewContactPane from "./Pane/Create";
+import EditContactPane from "./Pane/Edit";
 import Table from "./Table";
 
 import { noop } from "../util";
@@ -20,9 +22,15 @@ const Contacts = () => {
   const { t } = useTranslation();
 
   const [selectedContactIds, setSelectedContactIds] = useState([]);
+  const [selectedContact, setSelectedContact] = useState({});
   const [contactIDsToBeDeleted, setContactIDsToBeDeleted] = useState([]);
-  const [contacts, setContacts] = useState(CONTACTS_ROW_REPEATED_DATA);
+  const [contacts, setContacts] = useState(CONTACT_SAMPLE_REPEATED_DATA);
   const [deleteAlertVisibliity, setDeleteAlertVisibliity] = useState(false);
+  const [createContactPaneVisibility, setCreateContactPaneVisibility] =
+    useState(false);
+
+  const [editContactPaneVisibility, setEditContactPaneVisibility] =
+    useState(false);
 
   const deleteButtonContainerClasses = classNames("px-6", {
     hidden: selectedContactIds.length === 0,
@@ -45,11 +53,27 @@ const Contacts = () => {
     setDeleteAlertVisibliity(true);
   };
 
+  const showEditContactPane = contact => {
+    setEditContactPaneVisibility(true);
+    setSelectedContact(contact);
+  };
+
   return (
     <div className="flex w-full flex-col">
+      <NewContactPane
+        setContacts={setContacts}
+        setShowPane={setCreateContactPaneVisibility}
+        showPane={createContactPaneVisibility}
+      />
+      <EditContactPane
+        contact={selectedContact}
+        setContacts={setContacts}
+        setShowPane={setEditContactPaneVisibility}
+        showPane={editContactPaneVisibility}
+      />
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Contact" })}
-        handleActionButtonClick={noop}
+        handleActionButtonClick={() => setCreateContactPaneVisibility(true)}
         handleSearchValueChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Contact" })}
         title={t("page_titles.contacts")}
@@ -74,6 +98,7 @@ const Contacts = () => {
         columnData={CONTACTS_TABLE_COLUMN_DATA}
         rowData={contacts}
         selectedRows={selectedContactIds}
+        showEditContactPane={showEditContactPane}
         onRowKeySelect={setSelectedContactIds}
       />
     </div>

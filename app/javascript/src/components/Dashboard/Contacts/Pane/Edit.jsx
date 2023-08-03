@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import Form from "./Form";
 
-const Edit = ({ showPane, setShowPane, note, setNotes }) => {
+const Edit = ({ showPane, setShowPane, setContacts, contact }) => {
   const { t } = useTranslation();
 
   const handleClose = () => setShowPane(false);
@@ -14,10 +14,15 @@ const Edit = ({ showPane, setShowPane, note, setNotes }) => {
     <Pane isOpen={showPane} onClose={handleClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
-          {t("form.title.edit", { entity: "Note" })}
+          {t("form.title.add", { entity: "Contact" })}
         </Typography>
       </Pane.Header>
-      <Form isEdit note={note} setNotes={setNotes} onClose={handleClose} />
+      <Form
+        isEdit
+        contact={contact}
+        setContacts={setContacts}
+        onClose={handleClose}
+      />
     </Pane>
   );
 };

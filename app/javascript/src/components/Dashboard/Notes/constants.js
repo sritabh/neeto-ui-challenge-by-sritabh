@@ -28,7 +28,8 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
         .string()
         .trim()
         .required(t("required.entity", { entity: "Assigned Contact" })),
-    }),
+    })
+    .required(t("required.entity", { entity: "Assigned Contact" })),
   tags: yup.array().min(1, t("required.entities", { entities: "Tags" })),
 });
 
