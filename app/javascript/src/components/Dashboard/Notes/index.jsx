@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
+import DeleteAlert from "components/commons/DeleteAlert";
 import Toolbar from "components/commons/ToolBar";
 
 import { SAMPLE_NOTES } from "./constants";
-import DeleteAlert from "./DeleteAlert";
 import List from "./List";
 import NewNotePane from "./Pane/Create";
 import EditNotePane from "./Pane/Edit";
@@ -48,6 +48,7 @@ const Notes = () => {
         showPane={editNotePaneVisibility}
       />
       <DeleteAlert
+        entity="Note"
         handleSubmit={handleDelete}
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}

@@ -27,7 +27,6 @@ const ROW_SAMPLE_DATA1 = {
   actions: (
     <Dropdown buttonStyle="text" icon={MenuHorizontal}>
       <li>Edit</li>
-      <li>Delete</li>
     </Dropdown>
   ),
 };
@@ -52,7 +51,6 @@ const ROW_SAMPLE_DATA2 = {
   actions: (
     <Dropdown buttonStyle="text" icon={MenuHorizontal}>
       <li>Edit</li>
-      <li>Delete</li>
     </Dropdown>
   ),
 };
@@ -87,7 +85,7 @@ export const CONTACTS_TABLE_COLUMN_DATA = [
 
 //TODO: Look for scope for improvement, to manage individual row data
 export const CONTACTS_ROW_REPEATED_DATA = Array.from(
-  { length: 50 },
+  { length: 90 },
   (_, index) => ({
     id: uuidv4(),
     ...DUMMY_DATA_LIST[index % DUMMY_DATA_LIST.length],
