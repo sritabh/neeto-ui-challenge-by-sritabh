@@ -3,7 +3,8 @@
     "placeholder": "Search Name, Email, Phone Number,etc."
   },
   "button": {
-    "add_entity": "Add {{entity}} +"
+    "add_entity": "Add {{entity}} +",
+    "delete": "Delete"
   },
   "entity": {
     "deleted": "{{entity}} deleted successfully.",
@@ -24,5 +25,32 @@
   "required": {
     "entity": "{{entity}} is required.",
     "entities": "{{entities}} are required."
+  },
+  "contact_table": {
+    "columns": {
+      "name_role": "Name & Role",
+      "email": "EMAIL",
+      "created_at": "CREATED AT"
+    }
+  },
+  "form": {
+    "input": {
+      "label": {
+        "title": "Title",
+        "description": "Description",
+        "assigned_contact": "Assigned Contact",
+        "tags": "Tags"
+      },
+      "placeholder": {
+        "title": "Enter {{entity}} title",
+        "description": "Enter {{entity}} description",
+        "select": "Select {{entity}}"
+      },
+      "button": {
+        "save": "Save changes",
+        "update": "Update",
+        "cancel": "Cancel"
+      }
+    }
   }
 }
