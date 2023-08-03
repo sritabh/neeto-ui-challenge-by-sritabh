@@ -7,10 +7,10 @@ import Form from "./Form";
 import { NOTES_FORM_INITIAL_FORM_VALUES } from "../constants";
 
 const Create = ({ showPane, setShowPane, setNotes }) => {
-  const onClose = () => setShowPane(false);
+  const handleClose = () => setShowPane(false);
 
   return (
-    <Pane isOpen={showPane} onClose={onClose}>
+    <Pane isOpen={showPane} onClose={handleClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           Create a new note
@@ -20,7 +20,7 @@ const Create = ({ showPane, setShowPane, setNotes }) => {
         isEdit={false}
         note={NOTES_FORM_INITIAL_FORM_VALUES}
         setNotes={setNotes}
-        onClose={onClose}
+        onClose={handleClose}
       />
     </Pane>
   );

@@ -5,16 +5,16 @@ import { Pane, Typography } from "neetoui";
 import Form from "./Form";
 
 const Edit = ({ showPane, setShowPane, note, setNotes }) => {
-  const onClose = () => setShowPane(false);
+  const handleClose = () => setShowPane(false);
 
   return (
-    <Pane isOpen={showPane} onClose={onClose}>
+    <Pane isOpen={showPane} onClose={handleClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           Edit note
         </Typography>
       </Pane.Header>
-      <Form isEdit note={note} setNotes={setNotes} onClose={onClose} />
+      <Form isEdit note={note} setNotes={setNotes} onClose={handleClose} />
     </Pane>
   );
 };

@@ -8,7 +8,7 @@ import { noop } from "components/Dashboard/util";
 const Toolbar = ({
   searchPlaceholderValue,
   title,
-  handleSearchChange,
+  handleSearchValueChange,
   buttonLabel,
   handleActionButtonClick,
 }) => (
@@ -20,7 +20,7 @@ const Toolbar = ({
       <Button label={buttonLabel} onClick={handleActionButtonClick} />
     }
     searchProps={{
-      onChange: handleSearchChange,
+      onChange: handleSearchValueChange,
       placeholder: searchPlaceholderValue,
       value: "",
     }}

@@ -58,7 +58,7 @@ const Notes = () => {
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Note" })}
         handleActionButtonClick={() => setCreateNotePaneVisibility(true)}
-        handleSearchChange={noop}
+        handleSearchValueChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Note" })}
         title={t("page_titles.notes")}
       />

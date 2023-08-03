@@ -50,7 +50,7 @@ const Contacts = () => {
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Contact" })}
         handleActionButtonClick={noop}
-        handleSearchChange={noop}
+        handleSearchValueChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Contact" })}
         title={t("page_titles.contacts")}
       />
