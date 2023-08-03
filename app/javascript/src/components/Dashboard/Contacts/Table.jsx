@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
+import { noop } from "../util";
+
 const Table = ({ columnData, rowData, onRowKeySelect, selectedRows }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
 
@@ -17,7 +19,7 @@ const Table = ({ columnData, rowData, onRowKeySelect, selectedRows }) => {
         handlePageChange={setCurrentPageNumber}
         rowData={rowData}
         selectedRowKeys={selectedRows}
-        onRowClick={() => {}}
+        onRowClick={noop}
         onRowSelect={onRowKeySelect}
       />
     </div>

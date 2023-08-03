@@ -12,12 +12,16 @@ const Item = ({ note, showDeleteAlertForNote, showEditNotePane }) => {
       <div className="flex justify-between">
         <Typography style="h3">{note.title}</Typography>
         <Dropdown buttonStyle="text" icon={MenuVertical}>
-          <li onClick={() => showEditNotePane(note)}>
-            {t("dropdown_labels.edit")}
-          </li>
-          <li onClick={() => showDeleteAlertForNote(note)}>
-            {t("dropdown_labels.delete")}
-          </li>
+          <Dropdown.Menu>
+            <Dropdown.MenuItem.Button onClick={() => showEditNotePane(note)}>
+              {t("dropdown_labels.edit")}
+            </Dropdown.MenuItem.Button>
+            <Dropdown.MenuItem.Button
+              onClick={() => showDeleteAlertForNote(note)}
+            >
+              {t("dropdown_labels.delete")}
+            </Dropdown.MenuItem.Button>
+          </Dropdown.Menu>
         </Dropdown>
       </div>
       <Typography className="mb-3" style="body1">
@@ -46,7 +50,11 @@ const Item = ({ note, showDeleteAlertForNote, showEditNotePane }) => {
             <Avatar
               size="small"
               user={{
-                name: note.assignedContact.label,
+                name: `${
+                  note.assignedContact
+                    ? note.assignedContact.label
+                    : "Oliver Smith"
+                }`,
                 imageUrl: "",
               }}
             />

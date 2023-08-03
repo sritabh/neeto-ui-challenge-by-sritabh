@@ -3,11 +3,11 @@ import React from "react";
 import { Alert, Toastr } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-const DeleteAlert = ({ handleSubmit, isOpen, onClose, entity }) => {
+const DeleteAlert = ({ deleteAction, isOpen, onClose, entity }) => {
   const { t } = useTranslation();
 
-  const onSubmit = () => {
-    handleSubmit();
+  const handleSubmit = () => {
+    deleteAction();
     onClose();
     Toastr.success(t("entity.deleted", { entity }));
   };
@@ -18,7 +18,7 @@ const DeleteAlert = ({ handleSubmit, isOpen, onClose, entity }) => {
       message={t("alert.message", { entity })}
       title={t("alert.title", { entity })}
       onClose={onClose}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

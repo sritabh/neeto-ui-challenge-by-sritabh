@@ -3,6 +3,8 @@ import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane } from "neetoui";
 import { Input, Textarea, Select } from "neetoui/formik";
+import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   NOTES_FORM_VALIDATION_SCHEMA,
@@ -11,11 +13,8 @@ import {
 } from "../constants";
 
 const Form = ({ onClose, note, isEdit, setNotes }) => {
-  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-  const handleSubmit = async value => {
-    await delay(500);
-
+  const { t } = useTranslation();
+  const handleSubmit = value => {
     const noteData = { ...value };
     noteData.status = "Created";
 
@@ -27,7 +26,7 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
         return prevNotes;
       }
       noteData.added_at = new Date().toLocaleDateString();
-      noteData.id = prevNotes[0].id + 1;
+      noteData.id = uuidv4();
 
       return [noteData, ...prevNotes];
     });
@@ -47,53 +46,68 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
+              label={t("form.input.label.title")}
               name="title"
-              placeholder="Enter note title"
               unlimitedChars={false}
+              placeholder={t("form.input.placeholder.title", {
+                entity: "note",
+              })}
             />
             <Textarea
               required
               className="w-full flex-grow-0"
-              label="Description"
+              label={t("form.input.label.description")}
               name="description"
-              placeholder="Enter note description"
               rows={1}
               size="small"
               unlimitedChars={false}
+              placeholder={t("form.input.placeholder.description", {
+                entity: "note",
+              })}
             />
             <Select
               isSearchable
-              required
               className="w-full flex-grow-0"
-              label="Assigned Contact"
+              label={t("form.input.label.assigned_contact")}
               name="assignedContact"
               optionRemapping={{}}
               options={DUMMY_CONTACTS}
-              placeholder="Select Role"
+              placeholder={t("form.input.placeholder.select", {
+                entity: "Contact",
+              })}
             />
             <Select
               isMulti
               isSearchable
               required
               className="w-full flex-grow-0"
-              label="Tags"
+              label={t("form.input.label.tags")}
               name="tags"
               optionRemapping={{}}
               options={AVAILABLE_NOTE_TAGS}
-              placeholder="Select Role"
+              placeholder={t("form.input.placeholder.select", {
+                entity: "Tags",
+              })}
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
               loading={isSubmitting}
               style="primary"
               type="submit"
+              label={
+                isEdit
+                  ? t("form.input.button.update")
+                  : t("form.input.button.save")
+              }
             />
-            <Button label="Cancel" style="text" onClick={onClose} />
+            <Button
+              label={t("form.input.button.cancel")}
+              style="text"
+              onClick={onClose}
+            />
           </Pane.Footer>
         </FormikForm>
       )}

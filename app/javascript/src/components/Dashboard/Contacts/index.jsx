@@ -14,6 +14,8 @@ import {
 } from "./constant";
 import Table from "./Table";
 
+import { noop } from "../util";
+
 const Contacts = () => {
   const { t } = useTranslation();
 
@@ -26,7 +28,7 @@ const Contacts = () => {
     hidden: selectedContactIds.length === 0,
   });
 
-  const handleDelete = () => {
+  const deleteContacts = () => {
     setContactIDsToBeDeleted(selectedContactIds);
     setSelectedContactIds([]);
   };
@@ -47,24 +49,24 @@ const Contacts = () => {
     <div className="flex w-full flex-col">
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Contact" })}
-        handleActionButtonClick={() => {}}
+        handleActionButtonClick={noop}
+        handleSearchChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Contact" })}
         title={t("page_titles.contacts")}
-        onSearchChange={() => {}}
       />
       <SubHeader
         className={deleteButtonContainerClasses}
         rightActionBlock={
           <Button
-            label="Delete"
+            label={t("button.delete")}
             size="small"
             onClick={showDeleteAlertForConfirmation}
           />
         }
       />
       <DeleteAlert
+        deleteAction={deleteContacts}
         entity="Contacts"
-        handleSubmit={handleDelete}
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}
       />

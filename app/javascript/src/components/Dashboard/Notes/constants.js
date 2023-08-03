@@ -7,7 +7,7 @@ const t = i18n.t.bind(i18n);
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
-  assignedContact: "",
+  assignedContact: null,
   tags: [],
 };
 
@@ -18,21 +18,23 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .required(t("required.entity", { entity: "Description" })),
   assignedContact: yup
     .object()
-    .test(
-      "isValidLabel",
-      t("required.entity", { entity: "Assigned Contact" }),
-      value =>
-        value &&
-        value.label &&
-        typeof value.label === "string" &&
-        value.label.trim() !== ""
-    ),
+    .nullable()
+    .shape({
+      label: yup
+        .string()
+        .trim()
+        .required(t("required.entity", { entity: "Assigned Contact" })),
+      value: yup
+        .string()
+        .trim()
+        .required(t("required.entity", { entity: "Assigned Contact" })),
+    }),
   tags: yup.array().min(1, t("required.entities", { entities: "Tags" })),
 });
 
 export const SAMPLE_NOTES = [
   {
-    id: 4,
+    id: "4",
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
     tags: [
@@ -49,7 +51,7 @@ export const SAMPLE_NOTES = [
     },
   },
   {
-    id: 3,
+    id: "3",
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
     tags: [
@@ -66,7 +68,7 @@ export const SAMPLE_NOTES = [
     },
   },
   {
-    id: 2,
+    id: "2",
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
     tags: [
@@ -83,7 +85,7 @@ export const SAMPLE_NOTES = [
     },
   },
   {
-    id: 1,
+    id: "1",
     title: "How to claim the warranty?",
     description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
     tags: [
