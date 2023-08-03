@@ -67,6 +67,7 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
             />
             <Select
               isSearchable
+              required
               className="w-full flex-grow-0"
               label={t("form.input.label.assigned_contact")}
               name="assignedContact"

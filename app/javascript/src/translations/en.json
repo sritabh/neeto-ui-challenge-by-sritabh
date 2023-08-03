@@ -8,7 +8,8 @@
   },
   "entity": {
     "deleted": "{{entity}} deleted successfully.",
-    "added": "{{entity}} added successfully."
+    "added": "{{entity}} added successfully.",
+    "invalid": "Please enter a valid {{entity}}."
   },
   "page_titles": {
     "notes": "All Notes",
@@ -39,18 +40,29 @@
         "title": "Title",
         "description": "Description",
         "assigned_contact": "Assigned Contact",
-        "tags": "Tags"
+        "tags": "Tags",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email Address",
+        "role": "Role"
       },
       "placeholder": {
         "title": "Enter {{entity}} title",
         "description": "Enter {{entity}} description",
-        "select": "Select {{entity}}"
+        "select": "Select {{entity}}",
+        "first_name": "Enter first name",
+        "last_name": "Enter last name",
+        "email": "Enter your email address"
       },
       "button": {
         "save": "Save changes",
         "update": "Update",
         "cancel": "Cancel"
       }
+    },
+    "title": {
+      "add": "Add New {{entity}}",
+      "edit": "Edit {{entity}}"
     }
   }
 }
