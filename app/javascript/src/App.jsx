@@ -8,6 +8,8 @@ import { UserProvider } from "contexts/user";
 import i18n from "./common/i18n";
 import Main from "./components/Main";
 
+import "lib/dayjs"; // eslint-disable-line
+
 const App = props => (
   <I18nextProvider i18n={i18n}>
     <AuthProvider>

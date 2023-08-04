@@ -4,7 +4,7 @@ import { Clock, MenuVertical } from "neetoicons";
 import { Typography, Tag, Dropdown, Avatar, Tooltip } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-import { formatDate, timesAgo } from "./utils";
+import { formatDate, calculateCreatedAgo } from "./utils";
 
 const Item = ({ note, showDeleteAlertForNote, showEditNotePane }) => {
   const { t } = useTranslation();
@@ -45,7 +45,7 @@ const Item = ({ note, showDeleteAlertForNote, showEditNotePane }) => {
           <div className="flex items-center space-x-2">
             <Clock size="15" />
             <Typography className="flex items-start " style="body1">
-              {note.status} {timesAgo(note.createdAt)}
+              {note.status} {calculateCreatedAgo(note.createdAt)}
             </Typography>
             <Avatar
               size="small"

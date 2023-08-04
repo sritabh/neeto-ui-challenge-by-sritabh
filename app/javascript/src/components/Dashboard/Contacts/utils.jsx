@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React from "react";
 
+import dayjs from "dayjs";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Typography, Dropdown } from "neetoui";
 
@@ -46,8 +47,4 @@ export const formatRowDataForNeetoUITable = ({
   ),
 });
 
-export const formatDate = date => {
-  const options = { year: "numeric", month: "short", day: "numeric" };
-
-  return date.toLocaleDateString("en-US", options);
-};
+export const formatDate = date => dayjs(date).format("DD MMM YYYY");
