@@ -27,6 +27,7 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
       }
       noteData.createdAt = new Date();
       noteData.id = uuidv4();
+      noteData.included = true;
 
       return [noteData, ...prevNotes];
     });

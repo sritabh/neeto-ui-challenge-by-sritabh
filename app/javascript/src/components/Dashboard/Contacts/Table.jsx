@@ -14,12 +14,14 @@ const Table = ({
   showEditContactPane,
 }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  const formattedRowData = contactData.map(contact =>
-    formatRowDataForNeetoUITable({
-      ...contact,
-      onEdit: () => showEditContactPane(contact),
-    })
-  );
+  const formattedRowData = contactData
+    .filter(contact => contact.included)
+    .map(contact =>
+      formatRowDataForNeetoUITable({
+        ...contact,
+        onEdit: () => showEditContactPane(contact),
+      })
+    );
 
   return (
     <NeetoUITable

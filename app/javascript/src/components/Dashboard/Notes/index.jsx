@@ -4,14 +4,13 @@ import { Container } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
+import EmptyState from "components/commons/EmptyState";
 import Toolbar from "components/commons/ToolBar";
 
 import { SAMPLE_NOTES } from "./constants";
 import List from "./List";
 import NewNotePane from "./Pane/Create";
 import EditNotePane from "./Pane/Edit";
-
-import { noop } from "../util";
 
 const Notes = () => {
   const { t } = useTranslation();
@@ -37,14 +36,28 @@ const Notes = () => {
     setSelectedNote(note);
   };
 
+  const filterNotesListBySearchValue = (notes, value) =>
+    notes.map(note => ({
+      ...note,
+      included:
+        note.title.toLowerCase().includes(value.toLowerCase()) ||
+        note.description.toLowerCase().includes(value.toLowerCase()),
+    }));
+
+  const handleSearchValueChange = value => {
+    setNotes(prevIncludedNotes =>
+      filterNotesListBySearchValue(prevIncludedNotes, value.trim())
+    );
+  };
+
   return (
     <Container>
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Note" })}
         handleActionButtonClick={() => setCreateNotePaneVisibility(true)}
-        handleSearchValueChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Note" })}
         title={t("page_titles.notes")}
+        onSearchValueChange={handleSearchValueChange}
       />
       <NewNotePane
         setNotes={setNotes}
@@ -63,11 +76,20 @@ const Notes = () => {
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}
       />
-      <List
-        notes={notes}
-        showDeleteAlertForNote={showDeleteAlertForNote}
-        showEditNotePane={showEditNotePane}
-      />
+      {notes.filter(note => note.included).length > 0 ? (
+        <List
+          notes={notes}
+          showDeleteAlertForNote={showDeleteAlertForNote}
+          showEditNotePane={showEditNotePane}
+        />
+      ) : (
+        <EmptyState
+          primaryAction={() => setCreateNotePaneVisibility(true)}
+          primaryActionLabel={t("button.add_entity", { entity: "Note" })}
+          subtitle={t("empty_state.notes.subtitle")}
+          title={t("empty_state.notes.title")}
+        />
+      )}
     </Container>
   );
 };
