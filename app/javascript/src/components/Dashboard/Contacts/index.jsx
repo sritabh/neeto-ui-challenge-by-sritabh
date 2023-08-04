@@ -16,8 +16,6 @@ import NewContactPane from "./Pane/Create";
 import EditContactPane from "./Pane/Edit";
 import Table from "./Table";
 
-import { noop } from "../util";
-
 const Contacts = () => {
   const { t } = useTranslation();
 
@@ -58,14 +56,30 @@ const Contacts = () => {
     setSelectedContact(contact);
   };
 
+  const filterContactsListBySearchValue = (contacts, value) =>
+    contacts.map(contact => ({
+      ...contact,
+      included:
+        `${contact.firstName} ${contact.lastName}`
+          .toLowerCase()
+          .includes(value.toLowerCase()) ||
+        contact.email.toLowerCase().includes(value.toLowerCase()),
+    }));
+
+  const handleSearchValueChange = value => {
+    setContacts(prevIncludedContacts =>
+      filterContactsListBySearchValue(prevIncludedContacts, value.trim())
+    );
+  };
+
   return (
     <Container>
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Contact" })}
         handleActionButtonClick={() => setCreateContactPaneVisibility(true)}
-        handleSearchValueChange={noop}
         searchPlaceholderValue={t("search.placeholder", { entity: "Contact" })}
         title={t("page_titles.contacts")}
+        onSearchValueChange={handleSearchValueChange}
       />
       <SubHeader
         className={deleteButtonContainerClasses}

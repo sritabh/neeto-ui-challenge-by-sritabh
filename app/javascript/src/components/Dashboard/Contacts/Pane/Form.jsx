@@ -26,6 +26,7 @@ const Form = ({ onClose, contact, isEdit, setContacts }) => {
       }
       contactData.created_at = formatDate(new Date());
       contactData.id = uuidv4();
+      contactData.included = true;
 
       return [contactData, ...prevContacts];
     });

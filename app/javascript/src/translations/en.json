@@ -3,7 +3,7 @@
     "placeholder": "Search Name, Email, Phone Number,etc."
   },
   "button": {
-    "add_entity": "Add {{entity}} +",
+    "add_entity": "Add {{entity}}",
     "delete": "Delete"
   },
   "entity": {
@@ -64,6 +64,12 @@
     "title": {
       "add": "Add New {{entity}}",
       "edit": "Edit {{entity}}"
+    }
+  },
+  "empty_state": {
+    "notes": {
+      "title": "No notes available",
+      "subtitle": "Add your notes to send customized emails to them."
     }
   }
 }

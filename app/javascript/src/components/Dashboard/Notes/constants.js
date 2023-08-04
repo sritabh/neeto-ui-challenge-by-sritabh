@@ -19,6 +19,7 @@ const DUMMY_NOTE_DATA = {
     label: "Oliver Smith",
     value: "oliver@example.com",
   },
+  included: true,
 };
 
 export const NOTES_FORM_INITIAL_FORM_VALUES = {

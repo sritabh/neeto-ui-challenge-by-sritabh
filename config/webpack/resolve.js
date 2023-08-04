@@ -14,6 +14,7 @@ module.exports = {
     neetoui: "@bigbinary/neetoui",
     neetoicons: "@bigbinary/neeto-icons",
     utils: absolutePath("src/utils"),
+    hooks: absolutePath("src/hooks"),
   },
   extensions: [
     ".ts",

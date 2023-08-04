@@ -16,6 +16,7 @@ const CONTACT_SAMPLE_DATA_LIST = [
       label: "Owner",
       value: "owner",
     },
+    included: true,
   },
   {
     id: "2",
@@ -27,6 +28,7 @@ const CONTACT_SAMPLE_DATA_LIST = [
       label: "Owner",
       value: "owner",
     },
+    included: true,
   },
 ];
 
