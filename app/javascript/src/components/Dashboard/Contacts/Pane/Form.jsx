@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
-import { Button, Pane } from "neetoui";
+import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
@@ -30,6 +30,9 @@ const Form = ({ onClose, contact, isEdit, setContacts }) => {
       return [contactData, ...prevContacts];
     });
     onClose();
+
+    const toastMessage = isEdit ? "entity.updated" : "entity.added";
+    Toastr.success(t(toastMessage, { entity: "Contact" }));
   };
 
   return (
