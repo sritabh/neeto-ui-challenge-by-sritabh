@@ -8,16 +8,16 @@ import { noop } from "../util";
 
 const Table = ({
   columnData,
-  rowData,
+  contactData,
   onRowKeySelect,
   selectedRows,
   showEditContactPane,
 }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  const formattedRowData = rowData.map(row =>
+  const formattedRowData = contactData.map(contact =>
     formatRowDataForNeetoUITable({
-      ...row,
-      onEdit: () => showEditContactPane(row),
+      ...contact,
+      onEdit: () => showEditContactPane(contact),
     })
   );
 

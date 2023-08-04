@@ -49,7 +49,7 @@ const Form = ({ onClose, contact, isEdit, setContacts }) => {
                 required
                 className="w-full flex-grow-0"
                 label={t("form.input.label.first_name")}
-                name="first_name"
+                name="firstName"
                 placeholder={t("form.input.placeholder.first_name")}
                 unlimitedChars={false}
               />
@@ -57,7 +57,7 @@ const Form = ({ onClose, contact, isEdit, setContacts }) => {
                 required
                 className="w-full flex-grow-0"
                 label={t("form.input.label.last_name")}
-                name="last_name"
+                name="lastName"
                 placeholder={t("form.input.placeholder.last_name")}
                 unlimitedChars={false}
               />

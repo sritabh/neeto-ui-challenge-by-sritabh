@@ -96,7 +96,7 @@ const Contacts = () => {
       />
       <Table
         columnData={CONTACTS_TABLE_COLUMN_DATA}
-        rowData={contacts}
+        contactData={contacts}
         selectedRows={selectedContactIds}
         showEditContactPane={showEditContactPane}
         onRowKeySelect={setSelectedContactIds}
