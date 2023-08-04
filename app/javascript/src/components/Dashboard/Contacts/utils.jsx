@@ -10,31 +10,31 @@ const t = i18n.t.bind(i18n);
 
 export const formatRowDataForNeetoUITable = ({
   id,
-  first_name,
-  last_name,
+  firstName,
+  lastName,
   email,
   role,
-  created_at,
+  createdAt,
   onEdit,
 }) => ({
   id,
-  name_role: (
+  nameAndRole: (
     <div className="flex space-x-3">
       <Avatar
         size="medium"
         user={{
-          name: `${first_name} ${last_name}`,
+          name: `${firstName} ${lastName}`,
           imageUrl: "",
         }}
       />
       <div className="flex flex-col text-gray-500">
-        <Typography style="h5">{`${first_name} ${last_name}`}</Typography>
+        <Typography style="h5">{`${firstName} ${lastName}`}</Typography>
         <Typography style="body3">{role.label}</Typography>
       </div>
     </div>
   ),
   email: <span className="text-gray-500">{email}</span>,
-  created_at: <span className="text-gray-500">{created_at}</span>,
+  createdAt: <span className="text-gray-500">{createdAt}</span>,
   actions: (
     <Dropdown buttonStyle="text" icon={MenuHorizontal}>
       <Dropdown.Menu>

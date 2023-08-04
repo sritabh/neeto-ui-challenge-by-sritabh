@@ -8,10 +8,10 @@ const t = i18n.t.bind(i18n);
 const CONTACT_SAMPLE_DATA_LIST = [
   {
     id: "1",
-    first_name: "Ronalds",
-    last_name: "Richards",
+    firstName: "Ronalds",
+    lastName: "Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: {
       label: "Owner",
       value: "owner",
@@ -19,10 +19,10 @@ const CONTACT_SAMPLE_DATA_LIST = [
   },
   {
     id: "2",
-    first_name: "Jacob",
-    last_name: "Jones",
+    firstName: "Jacob",
+    lastName: "Jones",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: {
       label: "Owner",
       value: "owner",
@@ -41,8 +41,8 @@ export const CONTACT_SAMPLE_REPEATED_DATA = Array.from(
 export const CONTACTS_TABLE_COLUMN_DATA = [
   {
     title: t("contact_table.columns.name_role"),
-    dataIndex: "name_role",
-    key: "name_role",
+    dataIndex: "nameAndRole",
+    key: "nameAndRole",
     width: "30%",
   },
   {
@@ -53,8 +53,8 @@ export const CONTACTS_TABLE_COLUMN_DATA = [
   },
   {
     title: t("contact_table.columns.created_at"),
-    dataIndex: "created_at",
-    key: "created_at",
+    dataIndex: "createdAt",
+    key: "createdAt",
     width: "30%",
   },
   {
@@ -81,17 +81,17 @@ export const AVAILABLE_ROLES = [
 ];
 
 export const CONTACT_FORM_INITIAL_FORM_VALUES = {
-  first_name: "",
-  last_name: "",
+  firstName: "",
+  lastName: "",
   email: "",
   role: null,
 };
 
 export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  first_name: yup
+  firstName: yup
     .string()
     .required(t("required.entity", { entity: "First Name" })),
-  last_name: yup
+  lastName: yup
     .string()
     .required(t("required.entity", { entity: "Last Name" })),
   email: yup

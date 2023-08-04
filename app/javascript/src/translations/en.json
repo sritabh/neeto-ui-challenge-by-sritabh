@@ -9,7 +9,8 @@
   "entity": {
     "deleted": "{{entity}} deleted successfully.",
     "added": "{{entity}} added successfully.",
-    "invalid": "Please enter a valid {{entity}}."
+    "invalid": "Please enter a valid {{entity}}.",
+    "updated": "{{entity}} updated successfully."
   },
   "page_titles": {
     "notes": "All Notes",
