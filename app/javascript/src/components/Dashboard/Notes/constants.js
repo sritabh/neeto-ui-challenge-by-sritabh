@@ -4,6 +4,23 @@ import i18n from "../../../common/i18n";
 
 const t = i18n.t.bind(i18n);
 
+const DUMMY_NOTE_DATA = {
+  title: "How to claim the warranty?",
+  description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
+  tags: [
+    {
+      label: "Getting Started",
+      value: "getting-started",
+    },
+  ],
+  status: "Created",
+  createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
+  assignedContact: {
+    label: "Oliver Smith",
+    value: "oliver@example.com",
+  },
+};
+
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
@@ -35,72 +52,23 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
 
 export const SAMPLE_NOTES = [
   {
+    ...DUMMY_NOTE_DATA,
     id: "4",
-    title: "How to claim the warranty?",
-    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: [
-      {
-        label: "Getting Started",
-        value: "getting-started",
-      },
-    ],
-    status: "Created",
-    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assignedContact: {
-      label: "Oliver Smith",
-      value: "oliver@example.com",
-    },
   },
   {
+    ...DUMMY_NOTE_DATA,
     id: "3",
-    title: "How to claim the warranty?",
-    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: [
-      {
-        label: "Getting Started",
-        value: "getting-started",
-      },
-    ],
     status: "Drafted",
-    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assignedContact: {
-      label: "Oliver Smith",
-      value: "oliver@example.com",
-    },
   },
   {
+    ...DUMMY_NOTE_DATA,
     id: "2",
-    title: "How to claim the warranty?",
-    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: [
-      {
-        label: "Getting Started",
-        value: "getting-started",
-      },
-    ],
     status: "Drafted",
-    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assignedContact: {
-      label: "Oliver Smith",
-      value: "oliver@example.com",
-    },
   },
   {
+    ...DUMMY_NOTE_DATA,
     id: "1",
-    title: "How to claim the warranty?",
-    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
-    tags: [
-      {
-        label: "Getting Started",
-        value: "getting-started",
-      },
-    ],
     status: "Drafted",
-    added_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString(),
-    assignedContact: {
-      label: "Oliver Smith",
-      value: "oliver@example.com",
-    },
   },
 ];
 

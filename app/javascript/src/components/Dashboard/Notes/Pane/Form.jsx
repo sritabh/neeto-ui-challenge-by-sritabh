@@ -25,7 +25,7 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
 
         return prevNotes;
       }
-      noteData.added_at = new Date().toLocaleDateString();
+      noteData.createdAt = new Date();
       noteData.id = uuidv4();
 
       return [noteData, ...prevNotes];

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Container } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
@@ -37,7 +38,14 @@ const Notes = () => {
   };
 
   return (
-    <div className="flex w-full flex-col">
+    <Container>
+      <Toolbar
+        buttonLabel={t("button.add_entity", { entity: "Note" })}
+        handleActionButtonClick={() => setCreateNotePaneVisibility(true)}
+        handleSearchValueChange={noop}
+        searchPlaceholderValue={t("search.placeholder", { entity: "Note" })}
+        title={t("page_titles.notes")}
+      />
       <NewNotePane
         setNotes={setNotes}
         setShowPane={setCreateNotePaneVisibility}
@@ -55,19 +63,12 @@ const Notes = () => {
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}
       />
-      <Toolbar
-        buttonLabel={t("button.add_entity", { entity: "Note" })}
-        handleActionButtonClick={() => setCreateNotePaneVisibility(true)}
-        handleSearchValueChange={noop}
-        searchPlaceholderValue={t("search.placeholder", { entity: "Note" })}
-        title={t("page_titles.notes")}
-      />
       <List
         notes={notes}
         showDeleteAlertForNote={showDeleteAlertForNote}
         showEditNotePane={showEditNotePane}
       />
-    </div>
+    </Container>
   );
 };
 

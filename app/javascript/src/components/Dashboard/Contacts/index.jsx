@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import classNames from "classnames";
 import { Button } from "neetoui";
-import { SubHeader } from "neetoui/layouts";
+import { SubHeader, Container } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import DeleteAlert from "components/commons/DeleteAlert";
@@ -59,18 +59,7 @@ const Contacts = () => {
   };
 
   return (
-    <div className="flex w-full flex-col">
-      <NewContactPane
-        setContacts={setContacts}
-        setShowPane={setCreateContactPaneVisibility}
-        showPane={createContactPaneVisibility}
-      />
-      <EditContactPane
-        contact={selectedContact}
-        setContacts={setContacts}
-        setShowPane={setEditContactPaneVisibility}
-        showPane={editContactPaneVisibility}
-      />
+    <Container>
       <Toolbar
         buttonLabel={t("button.add_entity", { entity: "Contact" })}
         handleActionButtonClick={() => setCreateContactPaneVisibility(true)}
@@ -88,6 +77,17 @@ const Contacts = () => {
           />
         }
       />
+      <NewContactPane
+        setContacts={setContacts}
+        setShowPane={setCreateContactPaneVisibility}
+        showPane={createContactPaneVisibility}
+      />
+      <EditContactPane
+        contact={selectedContact}
+        setContacts={setContacts}
+        setShowPane={setEditContactPaneVisibility}
+        showPane={editContactPaneVisibility}
+      />
       <DeleteAlert
         deleteAction={deleteContacts}
         entity="Contacts"
@@ -101,7 +101,7 @@ const Contacts = () => {
         showEditContactPane={showEditContactPane}
         onRowKeySelect={setSelectedContactIds}
       />
-    </div>
+    </Container>
   );
 };
 

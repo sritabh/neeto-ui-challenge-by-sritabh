@@ -22,21 +22,19 @@ const Table = ({
   );
 
   return (
-    <div className="w-full p-4">
-      <NeetoUITable
-        allowRowClick
-        rowSelection
-        bordered={false}
-        columnData={columnData}
-        currentPageNumber={currentPageNumber}
-        defaultPageSize={9}
-        handlePageChange={setCurrentPageNumber}
-        rowData={formattedRowData}
-        selectedRowKeys={selectedRows}
-        onRowClick={noop}
-        onRowSelect={onRowKeySelect}
-      />
-    </div>
+    <NeetoUITable
+      allowRowClick
+      rowSelection
+      bordered={false}
+      columnData={columnData}
+      currentPageNumber={currentPageNumber}
+      defaultPageSize={9}
+      handlePageChange={setCurrentPageNumber}
+      rowData={formattedRowData}
+      selectedRowKeys={selectedRows}
+      onRowClick={noop}
+      onRowSelect={onRowKeySelect}
+    />
   );
 };
 
