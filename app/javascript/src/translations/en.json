@@ -22,7 +22,7 @@
   },
   "alert": {
     "message": "Are you sure you want to continue? This cannot be undone.",
-    "title": "Delete {{entity}}"
+    "title": "Delete {{entity}} {{entityName}}"
   },
   "required": {
     "entity": "{{entity}} is required.",

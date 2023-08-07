@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export const calculateCreatedAgo = date => dayjs(date).fromNow();
+export const findElapsedTime = date => dayjs(date).fromNow();
 
 export const formatDate = date => {
   const isSameDay = dayjs(date).isSame(dayjs(), "day");

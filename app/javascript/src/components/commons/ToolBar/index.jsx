@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button } from "neetoui";
 import { Header } from "neetoui/layouts";
+import PropTypes from "prop-types";
 
 import { noop } from "components/Dashboard/util";
 import useDebounce from "hooks/useDebounce";
@@ -45,6 +46,14 @@ const Toolbar = ({
       }}
     />
   );
+};
+
+Toolbar.propTypes = {
+  searchPlaceholderValue: PropTypes.string,
+  title: PropTypes.string,
+  onSearchValueChange: PropTypes.func,
+  buttonLabel: PropTypes.string,
+  handleActionButtonClick: PropTypes.func,
 };
 
 export default Toolbar;

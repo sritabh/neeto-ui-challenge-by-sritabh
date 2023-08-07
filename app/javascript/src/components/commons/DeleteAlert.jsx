@@ -1,13 +1,22 @@
 import React from "react";
 
 import { Alert, Toastr } from "neetoui";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 
-const DeleteAlert = ({ deleteAction, isOpen, onClose, entity }) => {
+import { shortenTitle } from "./utils";
+
+const DeleteAlert = ({
+  onDelete,
+  isOpen,
+  onClose,
+  entity,
+  entityTitle = "",
+}) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
-    deleteAction();
+    onDelete();
     onClose();
     Toastr.success(t("entity.deleted", { entity }));
   };
@@ -16,11 +25,22 @@ const DeleteAlert = ({ deleteAction, isOpen, onClose, entity }) => {
     <Alert
       isOpen={isOpen}
       message={t("alert.message", { entity })}
-      title={t("alert.title", { entity })}
+      title={t("alert.title", {
+        entity,
+        entityName: shortenTitle({ title: entityTitle }),
+      })}
       onClose={onClose}
       onSubmit={handleSubmit}
     />
   );
+};
+
+DeleteAlert.propTypes = {
+  onDelete: PropTypes.func,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  entity: PropTypes.string,
+  entityTitle: PropTypes.string,
 };
 
 export default DeleteAlert;

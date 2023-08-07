@@ -30,9 +30,13 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
 };
 
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required(t("required.entity", { entity: "Title" })),
+  title: yup
+    .string()
+    .trim()
+    .required(t("required.entity", { entity: "Title" })),
   description: yup
     .string()
+    .trim()
     .required(t("required.entity", { entity: "Description" })),
   assignedContact: yup
     .object()

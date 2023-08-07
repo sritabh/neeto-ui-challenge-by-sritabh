@@ -20,9 +20,9 @@ const Notes = () => {
   const [createNotePaneVisibility, setCreateNotePaneVisibility] =
     useState(false);
   const [editNotePaneVisibility, setEditNotePaneVisibility] = useState(false);
-  const [selectedNote, setSelectedNote] = useState(null);
+  const [selectedNote, setSelectedNote] = useState({});
 
-  const deleteNote = () => {
+  const handleDeleteNote = () => {
     setNotes(notes.filter(note => note.id !== selectedNote.id));
   };
 
@@ -71,10 +71,11 @@ const Notes = () => {
         showPane={editNotePaneVisibility}
       />
       <DeleteAlert
-        deleteAction={deleteNote}
-        entity="Note"
+        entity="note"
+        entityTitle={selectedNote.title}
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}
+        onDelete={handleDeleteNote}
       />
       {notes.filter(note => note.included).length > 0 ? (
         <List

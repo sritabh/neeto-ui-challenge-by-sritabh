@@ -1,11 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
 import * as yup from "yup";
 
 import i18n from "../../../common/i18n";
 
 const t = i18n.t.bind(i18n);
 
-const CONTACT_SAMPLE_DATA_LIST = [
+export const CONTACT_SAMPLE_DATA_LIST = [
   {
     id: "1",
     firstName: "Ronalds",
@@ -31,14 +30,6 @@ const CONTACT_SAMPLE_DATA_LIST = [
     included: true,
   },
 ];
-
-export const CONTACT_SAMPLE_REPEATED_DATA = Array.from(
-  { length: 90 },
-  (_, index) => ({
-    ...CONTACT_SAMPLE_DATA_LIST[index % CONTACT_SAMPLE_DATA_LIST.length],
-    id: uuidv4(),
-  })
-);
 
 export const CONTACTS_TABLE_COLUMN_DATA = [
   {
@@ -92,9 +83,11 @@ export const CONTACT_FORM_INITIAL_FORM_VALUES = {
 export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
   firstName: yup
     .string()
+    .trim()
     .required(t("required.entity", { entity: "First Name" })),
   lastName: yup
     .string()
+    .trim()
     .required(t("required.entity", { entity: "Last Name" })),
   email: yup
     .string()
