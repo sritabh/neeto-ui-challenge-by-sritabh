@@ -10,11 +10,12 @@ import Toolbar from "components/commons/ToolBar";
 
 import {
   CONTACTS_TABLE_COLUMN_DATA,
-  CONTACT_SAMPLE_REPEATED_DATA,
+  CONTACT_SAMPLE_DATA_LIST,
 } from "./constants";
 import NewContactPane from "./Pane/Create";
 import EditContactPane from "./Pane/Edit";
 import Table from "./Table";
+import { buildRepeatedContactData } from "./utils";
 
 const Contacts = () => {
   const { t } = useTranslation();
@@ -22,7 +23,9 @@ const Contacts = () => {
   const [selectedContactIds, setSelectedContactIds] = useState([]);
   const [selectedContact, setSelectedContact] = useState({});
   const [contactIDsToBeDeleted, setContactIDsToBeDeleted] = useState([]);
-  const [contacts, setContacts] = useState(CONTACT_SAMPLE_REPEATED_DATA);
+  const [contacts, setContacts] = useState(
+    buildRepeatedContactData(CONTACT_SAMPLE_DATA_LIST)
+  );
   const [deleteAlertVisibliity, setDeleteAlertVisibliity] = useState(false);
   const [createContactPaneVisibility, setCreateContactPaneVisibility] =
     useState(false);
@@ -34,18 +37,10 @@ const Contacts = () => {
     hidden: selectedContactIds.length === 0,
   });
 
-  const deleteContacts = () => {
+  const handleDeleteContacts = () => {
     setContactIDsToBeDeleted(selectedContactIds);
     setSelectedContactIds([]);
   };
-
-  useEffect(() => {
-    if (contactIDsToBeDeleted.length === 0) return;
-    setContacts(
-      contacts.filter(contact => !contactIDsToBeDeleted.includes(contact.id))
-    );
-    setContactIDsToBeDeleted([]);
-  }, [contactIDsToBeDeleted]);
 
   const showDeleteAlertForConfirmation = () => {
     setDeleteAlertVisibliity(true);
@@ -71,6 +66,14 @@ const Contacts = () => {
       filterContactsListBySearchValue(prevIncludedContacts, value.trim())
     );
   };
+
+  useEffect(() => {
+    if (contactIDsToBeDeleted.length === 0) return;
+    setContacts(
+      contacts.filter(contact => !contactIDsToBeDeleted.includes(contact.id))
+    );
+    setContactIDsToBeDeleted([]);
+  }, [contactIDsToBeDeleted]);
 
   return (
     <Container>
@@ -103,10 +106,10 @@ const Contacts = () => {
         showPane={editContactPaneVisibility}
       />
       <DeleteAlert
-        deleteAction={deleteContacts}
         entity="Contacts"
         isOpen={deleteAlertVisibliity}
         onClose={() => setDeleteAlertVisibliity(false)}
+        onDelete={handleDeleteContacts}
       />
       <Table
         columnData={CONTACTS_TABLE_COLUMN_DATA}
