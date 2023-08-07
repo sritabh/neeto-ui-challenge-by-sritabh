@@ -33,10 +33,6 @@ const Contacts = () => {
   const [editContactPaneVisibility, setEditContactPaneVisibility] =
     useState(false);
 
-  const deleteButtonContainerClasses = classNames("px-6", {
-    hidden: selectedContactIds.length === 0,
-  });
-
   const handleDeleteContacts = () => {
     setContactIDsToBeDeleted(selectedContactIds);
     setSelectedContactIds([]);
@@ -69,6 +65,7 @@ const Contacts = () => {
 
   useEffect(() => {
     if (contactIDsToBeDeleted.length === 0) return;
+
     setContacts(
       contacts.filter(contact => !contactIDsToBeDeleted.includes(contact.id))
     );
@@ -85,7 +82,9 @@ const Contacts = () => {
         onSearchValueChange={handleSearchValueChange}
       />
       <SubHeader
-        className={deleteButtonContainerClasses}
+        className={classNames("px-6", {
+          hidden: !selectedContactIds.length,
+        })}
         rightActionBlock={
           <Button
             label={t("button.delete")}
